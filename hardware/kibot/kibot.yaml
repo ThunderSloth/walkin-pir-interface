@@ -1,0 +1,88 @@
+kibot:
+  version: 1
+
+global:
+  out_dir: ../../outputs
+
+preflight:
+  check_zone_fills: true
+
+outputs:
+  # =============================
+  # FAB (generic manufacturing)
+  # =============================
+  - name: fab_gerbers
+    type: gerber
+    dir: fab/gerbers
+    options:
+      use_protel_extensions: true
+
+  - name: fab_drill
+    type: excellon
+    dir: fab/gerbers
+    options:
+      metric_units: true
+
+  # =============================
+  # Assembly (for you / assembler)
+  # =============================
+  - name: bom
+    type: bom
+    dir: assembly
+    options:
+      format: CSV
+
+  - name: cpl
+    type: position
+    dir: assembly
+    options:
+      format: CSV
+      units: millimeters
+      separate_files_for_front_and_back: true
+      only_smd: true
+
+  # =============================
+  # MCAD (Fusion 360 enclosure)
+  # =============================
+  - name: mcad_step
+    type: export_3d
+    dir: mcad
+    options:
+      format: step
+      origin: drill        # Uses KiCad auxiliary (drill) origin
+      no_virtual: true
+
+  # =============================
+  # Documentation
+  # =============================
+  - name: schematic_pdf
+    type: pdf_sch_print
+    dir: docs/schematic
+    options:
+      monochrome: false
+
+  - name: ibom
+    type: ibom
+    dir: docs/ibom
+    options:
+      highlight_pin1: true
+      show_fabrication: false
+      dark_mode: true
+
+  # =============================
+  # Board renders (README / docs)
+  # =============================
+  - name: pcbdraw_top
+    type: pcbdraw
+    dir: docs/renders
+    options:
+      format: png
+      bottom: false
+
+  - name: pcbdraw_bottom
+    type: pcbdraw
+    dir: docs/renders
+    options:
+      format: png
+      bottom: true
+

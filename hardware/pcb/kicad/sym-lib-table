@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "WALKIN_PIR_IF")(type "KiCad")(uri "${KIPRJMOD}/sym-lib/WALKIN_PIR_IF.kicad_sym")(options "")(descr ""))
+)

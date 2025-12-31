@@ -38,3 +38,38 @@ fp-info-cache
 
 # Local project settings
 *.kicad_prl
+
+# -----------------------------
+# OS junk
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# -----------------------------
+# KiBot cache / temp
+**/.kibot_cache/
+**/.kibot_tmp/
+
+# KiCad lock files
+*.kicad_pcb.lck
+~*.kicad_pcb.lck
+
+# KiBot temporary projects
+kibot_*.kicad_pcb
+kibot_*.kicad_pro
+kibot_*.kicad_prl
+
+# -----------------------------
+# Fusion 360 temp / lock files
+**/*.f3d.lock
+**/*.f3z.lock
+**/*~$*
+
+# -----------------------------
+# Optional generated artifacts
+# Uncomment if you do NOT want these tracked
+# **/*.pdf
+# **/*.zip
