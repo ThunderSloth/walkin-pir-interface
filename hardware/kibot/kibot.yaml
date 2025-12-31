@@ -9,7 +9,7 @@ preflight:
 
 outputs:
   # =============================
-  # FAB (generic manufacturing)
+  # FAB (manufacturing outputs)
   # =============================
   - name: fab_gerbers
     type: gerber
@@ -24,7 +24,32 @@ outputs:
       metric_units: true
 
   # =============================
-  # Assembly (for you / assembler)
+  # FAB DRAWING (autoscaled, relaxed)
+  # =============================
+  - name: fab_drawing
+    type: pcb_print
+    dir: docs/fab
+    options:
+      format: PDF
+      output: "%f-fab-drawing.%x"
+      plot_sheet_reference: true
+      drill_marks: full
+      scaling: 0
+      autoscale_margin_x: 25
+      autoscale_margin_y: 25
+      pages:
+        - title: "Fabrication Drawing"
+          monochrome: true
+          mirror: false
+          colored_holes: false
+          layers:
+            - layer: Edge.Cuts
+              use_for_center: true
+            - User.Drawings
+            - Dwgs.User
+
+  # =============================
+  # Assembly data (for you / assembler)
   # =============================
   - name: bom
     type: bom
@@ -42,6 +67,53 @@ outputs:
       only_smd: true
 
   # =============================
+  # Assembly drawings (autoscaled, more margin)
+  # =============================
+  - name: assy_top
+    type: pcb_print
+    dir: docs/assembly
+    options:
+      format: PDF
+      output: "%f-assembly-top.%x"
+      plot_sheet_reference: true
+      scaling: 0
+      autoscale_margin_x: 20
+      autoscale_margin_y: 20
+      pages:
+        - title: "Assembly Drawing (Top)"
+          monochrome: true
+          mirror: false
+          sketch_pads_on_fab_layers: false
+          layers:
+            - layer: Edge.Cuts
+              use_for_center: true
+            - F.Fab
+            - F.Silkscreen
+            - User.Drawings
+
+  - name: assy_bottom
+    type: pcb_print
+    dir: docs/assembly
+    options:
+      format: PDF
+      output: "%f-assembly-bottom.%x"
+      plot_sheet_reference: true
+      scaling: 0
+      autoscale_margin_x: 20
+      autoscale_margin_y: 20
+      pages:
+        - title: "Assembly Drawing (Bottom)"
+          monochrome: true
+          mirror: true
+          sketch_pads_on_fab_layers: false
+          layers:
+            - layer: Edge.Cuts
+              use_for_center: true
+            - B.Fab
+            - B.Silkscreen
+            - User.Drawings
+
+  # =============================
   # MCAD (Fusion 360 enclosure)
   # =============================
   - name: mcad_step
@@ -49,7 +121,7 @@ outputs:
     dir: mcad
     options:
       format: step
-      origin: drill        # Uses KiCad auxiliary (drill) origin
+      origin: drill
       no_virtual: true
 
   # =============================
@@ -70,19 +142,16 @@ outputs:
       dark_mode: true
 
   # =============================
-  # Board renders (README / docs)
+  # Board renders (2D)
   # =============================
   - name: pcbdraw_top
     type: pcbdraw
     dir: docs/renders
     options:
-      format: png
       bottom: false
 
   - name: pcbdraw_bottom
     type: pcbdraw
     dir: docs/renders
     options:
-      format: png
       bottom: true
-
