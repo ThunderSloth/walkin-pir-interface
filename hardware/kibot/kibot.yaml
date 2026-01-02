@@ -134,10 +134,14 @@ outputs:
     dir: docs/renders
     options:
       bottom: false
+      format: png
+      dpi: 300
 
   - name: pcbdraw_bottom
     type: pcbdraw
     dir: docs/renders
     options:
       bottom: true
+      format: png
+      dpi: 300
 

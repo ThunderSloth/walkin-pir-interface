@@ -20,8 +20,8 @@ This site hosts the complete set of design, assembly, and fabrication artifacts 
 ## 📐 Design
 
 - **Schematic (PDF)** [[view]](artifacts/docs/schematic/WALKIN_PIR_IF-schematic.pdf)
-- **PCB Render — Top (2D)** [[view]](artifacts/docs/renders/WALKIN_PIR_IF-top.svg)
-- **PCB Render — Bottom (2D)** [[view]](artifacts/docs/renders/WALKIN_PIR_IF-bottom.svg)
+- **PCB Render — Top (2D)** [[view]](artifacts/docs/renders/WALKIN_PIR_IF-top.png)
+- **PCB Render — Bottom (2D)** [[view]](artifacts/docs/renders/WALKIN_PIR_IF-bottom.png)
 
 ---
 
