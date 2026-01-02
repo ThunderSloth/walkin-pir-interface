@@ -1,0 +1,28 @@
+site_name: WALKIN_PIR_IF
+site_url: https://thundersloth.github.io/walkin-pir-interface/
+use_directory_urls: true
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: light blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+nav:
+  - Home: index.md
+
+markdown_extensions:
+  - attr_list
+
+extra_css:
+  - extra.css

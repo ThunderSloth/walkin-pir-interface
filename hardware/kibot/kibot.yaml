@@ -2,7 +2,7 @@ kibot:
   version: 1
 
 global:
-  out_dir: ../../outputs
+  out_dir: .
 
 preflight:
   check_zone_fills: true
@@ -62,6 +62,7 @@ outputs:
     dir: assembly
     options:
       format: CSV
+      output: "%f-pickplace-%i.%x"
       units: millimeters
       separate_files_for_front_and_back: true
       only_smd: true
@@ -83,36 +84,20 @@ outputs:
         - title: "Assembly Drawing (Top)"
           monochrome: true
           mirror: false
-          sketch_pads_on_fab_layers: false
           layers:
             - layer: Edge.Cuts
               use_for_center: true
-            - F.Fab
-            - F.Silkscreen
-            - User.Drawings
 
-  - name: assy_bottom
-    type: pcb_print
-    dir: docs/assembly
-    options:
-      format: PDF
-      output: "%f-assembly-bottom.%x"
-      plot_sheet_reference: true
-      scaling: 0
-      autoscale_margin_x: 20
-      autoscale_margin_y: 20
-      pages:
-        - title: "Assembly Drawing (Bottom)"
-          monochrome: true
-          mirror: true
-          sketch_pads_on_fab_layers: false
-          layers:
-            - layer: Edge.Cuts
-              use_for_center: true
-            - B.Fab
-            - B.Silkscreen
-            - User.Drawings
+            # Primary assembly geometry
+            - layer: F.Fab
 
+            # Optional but very nice
+            - layer: F.CrtYd
+              plot_footprint_refs: false
+              plot_footprint_values: false
+
+            # Your callouts, circles, notes
+            - User.Drawings
   # =============================
   # MCAD (Fusion 360 enclosure)
   # =============================
@@ -155,3 +140,4 @@ outputs:
     dir: docs/renders
     options:
       bottom: true
+

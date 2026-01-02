@@ -62,11 +62,25 @@ kibot_*.kicad_pcb
 kibot_*.kicad_pro
 kibot_*.kicad_prl
 
+# --- KiBot navigation (auto-index) clutter ---
+outputs/**/index*.html
+outputs/**/images/
+outputs/**/styles.css
+outputs/**/markdown-it.min.js
+outputs/**/favicon.ico
+outputs/**/pcbnew_interposer.log
+
+# Optional: if you ever generate other logs
+outputs/**/*.log
 # -----------------------------
 # Fusion 360 temp / lock files
 **/*.f3d.lock
 **/*.f3z.lock
 **/*~$*
+
+# -----------------------------
+# mkdocs outputs
+site/
 
 # -----------------------------
 # Optional generated artifacts

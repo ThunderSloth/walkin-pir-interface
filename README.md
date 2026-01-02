@@ -30,10 +30,12 @@ All lighting logic and power switching are handled by the controller; this board
 
 ---
 
-## Repository Contents
-- KiCad schematic and PCB layout
-- Fusion 360 enclosure design files
-- Design rationale and protection notes documented in this README
+## Hardware Documentation
+
+All design, assembly, and fabrication artifacts are published here:
+
+**WALKIN_PIR_IF Documentation (MkDocs)**  
+https://thundersloth.github.io/walkin-pir-interface/
 
 ---
 
