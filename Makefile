@@ -14,6 +14,13 @@ FAB_ZIP   := $(OUT_DIR)/fab/$(PROJECT)_fab.zip
 DOCS_DIR       := docs
 DOCS_ARTIFACTS := $(DOCS_DIR)/artifacts
 
+# Where KiBot writes SVG renders, and where we want PNGs to land
+RENDERS_DIR := $(DOCS_ARTIFACTS)/docs/renders
+TOP_SVG     := $(RENDERS_DIR)/$(PROJECT)-top.svg
+BOT_SVG     := $(RENDERS_DIR)/$(PROJECT)-bottom.svg
+TOP_PNG     := $(RENDERS_DIR)/$(PROJECT)-top.png
+BOT_PNG     := $(RENDERS_DIR)/$(PROJECT)-bottom.png
+
 .PHONY: all build zip clean check sync_docs mkdocs
 
 # Default: build outputs, create fab zip, and sync artifacts into MkDocs
@@ -51,6 +58,21 @@ sync_docs: build
 	@sips -s format png "$(DOCS_ARTIFACTS)/docs/fab/$(PROJECT)-fab-drawing.pdf" --out "$(DOCS_ARTIFACTS)/previews/fab-drawing.png" >/dev/null 2>&1 || true
 	@sips -s format png "$(DOCS_ARTIFACTS)/docs/assembly/$(PROJECT)-assembly-top.pdf" --out "$(DOCS_ARTIFACTS)/previews/assembly-top.png" >/dev/null 2>&1 || true
 
+	@echo "==> Converting SVG PCB renders to PNG for README compatibility (macOS sips)…"
+	@mkdir -p "$(RENDERS_DIR)"
+	@if [ -f "$(TOP_SVG)" ]; then \
+	  sips -s format png "$(TOP_SVG)" --out "$(TOP_PNG)" >/dev/null 2>&1 || true; \
+	  echo "    wrote $(TOP_PNG)"; \
+	else \
+	  echo "    (skip) missing $(TOP_SVG)"; \
+	fi
+	@if [ -f "$(BOT_SVG)" ]; then \
+	  sips -s format png "$(BOT_SVG)" --out "$(BOT_PNG)" >/dev/null 2>&1 || true; \
+	  echo "    wrote $(BOT_PNG)"; \
+	else \
+	  echo "    (skip) missing $(BOT_SVG)"; \
+	fi
+
 mkdocs: sync_docs
 	@echo "==> Serving MkDocs…"
 	mkdocs serve
@@ -64,6 +86,7 @@ check:
 	@command -v docker >/dev/null 2>&1 || (echo "Docker not found in PATH" && exit 1)
 	@command -v rsync  >/dev/null 2>&1 || (echo "rsync not found (try: brew install rsync)" && exit 1)
 	@command -v mkdocs >/dev/null 2>&1 || (echo "mkdocs not found (try: pipx install mkdocs mkdocs-material --include-deps)" && exit 1)
+	@command -v sips  >/dev/null 2>&1 || (echo "sips not found (macOS only tool)" && exit 1)
 	@test -f "$(KIBOT_CFG)" || (echo "Missing $(KIBOT_CFG)" && exit 1)
 	@test -f "$(KICAD_DIR)/$(PROJECT).kicad_pcb" || (echo "Missing PCB file" && exit 1)
 	@test -f "$(KICAD_DIR)/$(PROJECT).kicad_sch" || (echo "Missing SCH file" && exit 1)
