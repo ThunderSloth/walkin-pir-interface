@@ -1,6 +1,6 @@
 # Battery-Powered PIR Motion Interface (Isolated Dry Contact)
 
-![Top view render of WALKIN_PIR_IF PCB](hardware/outputs/docs/renders/WALKIN_PIR_IF-top.png)
+![Top view render of WALKIN_PIR_IF PCB](outputs/docs/renders/WALKIN_PIR_IF-top.png)
 ## Overview
 Battery-powered PIR interface designed to trigger **motion-activated overhead lighting** via an **isolated dry input** on an **XWA11V industrial controller**. Intended for installation in a **walk-in cooler** where running mains power to the sensor is undesirable.
 
