@@ -38,7 +38,9 @@ All design, assembly, and fabrication artifacts are published here:
 ---
 
 ## Hardware Status
-Rev A hardware, intended for real-world deployment.
+Rev B designed — pending bench validation and fabrication.
+- Rev A issue identified: PIR output stage overloaded by PhotoMOS input LED drive.
+- Rev B adds NPN low-side driver + current-limit resistor to decouple PIR output from LED load.
 
 ![3d render of WALKIN_PIR_IF PCB](assets/WALKIN_PIR_IF.png)
 
