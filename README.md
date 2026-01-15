@@ -39,8 +39,8 @@ All design, assembly, and fabrication artifacts are published here:
 
 ## Hardware Status
 Rev B designed — pending bench validation and fabrication.
-- Rev A issue identified: PIR output stage overloaded by PhotoMOS input LED drive.
-- Rev B adds NPN low-side driver + current-limit resistor to decouple PIR output from LED load.
+- Rev A finding: AM312 PIR output toggles when unloaded, but sags under PhotoMOS LED load (direct-drive), preventing reliable switching.
+- Rev B change: Added NPN low-side driver + LED current-limit resistor to isolate PIR output from PhotoMOS input LED current.
 
 ![3d render of WALKIN_PIR_IF PCB](assets/WALKIN_PIR_IF.png)
 
