@@ -5,13 +5,13 @@
       "Application": "Pcbnew",
       "Version": "9.0.1+1"
     },
-    "CreationDate": "2026-01-02T04:54:49+00:00"
+    "CreationDate": "2026-01-15T22:30:42+00:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "WALKIN_PIR_IF",
       "GUID": "57414c4b-494e-45f5-9049-525f49462e6b",
-      "Revision": "A"
+      "Revision": "B"
     },
     "Size": {
       "X": 67.12,
