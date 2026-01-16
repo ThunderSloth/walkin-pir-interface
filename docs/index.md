@@ -13,7 +13,7 @@ This site hosts the complete set of design, assembly, and fabrication artifacts 
 
 ## ℹ️ Project
 
-- **GitHub Repository** [[view]](https://github.com/ThunderSloth/walkin-pir-interface)
+- **GitHub Repository** [ThunderSloth/walkin-pir-interface](https://github.com/ThunderSloth/walkin-pir-interface)
 
 ---
 
