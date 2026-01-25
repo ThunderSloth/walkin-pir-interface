@@ -8,6 +8,8 @@ The board detects motion using an **AM312 PIR** and signals the controller by cl
 
 All lighting logic and power switching are handled by the controller; this board functions as a low-power, robust peripheral.
 
+![3D render of WALKIN_PIR_IF PCB](assets/WALKIN_PIR_IF.png)
+
 ---
 
 ## Design Summary
@@ -33,14 +35,21 @@ All lighting logic and power switching are handled by the controller; this board
 
 All design, assembly, and fabrication artifacts are published here:
 
-[WALKIN_PIR_IF Documentation (MkDocs)](https://thundersloth.github.io/walkin-pir-interface/)
+➡️ [WALKIN_PIR_IF Documentation (MkDocs)](https://thundersloth.github.io/walkin-pir-interface/)
 
 ---
 
 ## Hardware Status
-Rev B designed — pending bench validation and fabrication.
-- Rev A finding: AM312 PIR output toggles when unloaded, but sags under PhotoMOS LED load (direct-drive), preventing reliable switching.
-- Rev B change: Added NPN low-side driver + LED current-limit resistor to isolate PIR output from PhotoMOS input LED current.
 
-![3d render of WALKIN_PIR_IF PCB](assets/WALKIN_PIR_IF.png)
+**Rev B sent to fabrication ✅**  
+Simplified prototype validated (video below).
+
+- **Rev A:** PIR output sags under direct PhotoMOS LED drive → unreliable switching.
+- **Rev B:** Added NPN low-side driver + LED current-limit resistor to isolate PIR output from load.
+
+[https://github.com/user-attachments/assets/d97296ae-1a20-4d2e-b4a4-3fdf33289da8](https://github.com/user-attachments/assets/c07f9941-2b6e-4c99-ae80-a9b624c08050)
+
+
+
+
 
